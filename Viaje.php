@@ -27,12 +27,11 @@ class Viaje{
 
 
     //// CONSTRUCTOR ////
-    public function __construct($codViagem , $destiny , $cantidadGenteEnBus, $cantMaxPasaj){
+    public function __construct($codViagem , $destiny , $cantMaxPasaj){
         $this->codigoViaje = $codViagem;
         $this->destino = $destiny;
         $this->cantMaxPasajeros = $cantMaxPasaj;
-        $this->cantPasajerosViaje = $cantidadGenteEnBus;
-        
+           
     }   
 
     // METODOS //
