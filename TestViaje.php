@@ -56,8 +56,6 @@ switch ($eleccion) {
 
 
 
-
-
     function infoPasajero(){
         do{
             $respuesta= false;
@@ -74,10 +72,10 @@ switch ($eleccion) {
             if($opcionElegible=="S"){
 
             }
-
+            return $pasajero;
 
         }
-     return $pasajero;
+     
     }
 
 
