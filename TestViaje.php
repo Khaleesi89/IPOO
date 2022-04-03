@@ -29,8 +29,6 @@ do{
 
                             break;
 
-   
-
                             case '2':
                                 // 2) Modificar un viaje
                                     do{
@@ -79,8 +77,7 @@ do{
                                             default:
                                                 echo "el código ingresado no existe";
                                                 break;
-                                       };
-                        
+                                        }
                             
                                     }while($salida);
 
@@ -96,7 +93,7 @@ do{
                                 echo "Ingrese un valor del 1 al 4";
 
                             break;
-                    };
+    };
 
 
 }while($finish);
