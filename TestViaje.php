@@ -1,16 +1,17 @@
 <?php
 
-include 'Vieje.php';
+include 'Viaje.php';
 
-echo "--------- Viaje Feliz ----------";
+echo "--------- Viaje Feliz ----------\n";
 
 // EJECUTAMOS EL PROGRAMA //
 
 // MENU PRINCIPAL //
 
+$terminar=true;
 do{
-    $finish= true;
-    $viagiando= menu();
+    echo menu();
+    $viagiando= trim (fgets(STDIN));
     switch ($viagiando) {
         
                             case '1':
@@ -53,7 +54,13 @@ do{
                                             
                                             case '3':
                                                 // Desea cambiar los datos de un pasajero?  //
-                                                    # code...
+                                                    echo "Ingrese los datos del pasajero a modificar: ";
+                                                    $modificarPasajero1= buscarPasajero();
+                                                    echo "Ingrese los datos nuevos del pasajero \n";
+                                                    $modificarPasajero2= buscarPasajero();
+                                                    $objViaje->modificarViajeros($modificarPasajero1,$modificarPasajero2);
+
+
                                                     break;
                                         
                                             case '4':
@@ -75,7 +82,7 @@ do{
                                                     break;
                                         
                                             default:
-                                                echo "el código ingresado no existe";
+                                                $salida=false;
                                                 break;
                                         }
                             
@@ -86,13 +93,9 @@ do{
 
                                     break;
 
-                            case '4':
-                                $finish= false;
-                                break;
                             default:
-                                echo "Ingrese un valor del 1 al 4";
-
-                            break;
+                            $finish= false;
+                                    break;
     };
 
 
@@ -102,8 +105,7 @@ do{
 
 
     function infoPasajero(){
-        do{
-            $respuesta= false;
+       
             $pasajero=[];
             echo "Ingrese apellido: \n";
             $apellido= strtoupper(trim (fgets(STDIN)));
@@ -112,13 +114,6 @@ do{
             echo "Ingrese DNI: \n";
             $dni= strtoupper(trim (fgets(STDIN)));
             $pasajero = ['nombre'=>$nombre, 'apellido'=>$apellido, 'DNI'=>$dni];
-            echo "Desea ingresar un nuevo pasajero? S - N \n";
-            $opcionElegible= strtoupper(trim (fgets(STDIN)));
-            if($opcionElegible=="S"){
-                $respuesta= true;
-            }
-
-        }while ($respuesta);
         return $pasajero;
     }
 
@@ -150,4 +145,19 @@ do{
                 echo "Opcion incorrecta.\n";
             }    
     }while (((is_int($respuesta)) && ($respuesta < 0 || $respuesta < 4)));
+}
+
+
+///BUSCAR PASAJERO///
+
+function buscarPasajero(){
+    echo  "Nombre: \n";
+    $nomb = trim(fgets(STDIN));
+    echo  "Apellido:\n";
+    $apellid = trim(fgets(STDIN));
+    echo "DNI:\n";
+    $id = trim(fgets( STDIN ));
+    $gente=[];
+    $gente = array("nombre"=>$nomb ,"apellido"=>$apellid,"DNI"=>$id);
+    return $gente;
 }
