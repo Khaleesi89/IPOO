@@ -32,65 +32,15 @@ do{
 
                             case '2':
                                 // 2) Modificar un viaje
-                                    do{
-                                        $salida=true;
-                                        echo menuPunto2();
-                                        $eleccion2= trim (fgets(STDIN));
+                                echo modificacionDatos();
 
-                                        switch ($eleccion2){
-                                            case '1':
-                                                // Desea cambiar el código del viaje? //
-                                                echo "Ingrese el nuevo código: \n";
-                                                $newCod= strtoupper(trim (fgets(STDIN)));
-                                                $objViaje->setCodigoViaje($newCod);
-                                                break;
-                                                
-                                            case '2':
-                                                // Desea cambiar el destino?  //
-                                                echo "Ingrese el nuevo destino: \n";
-                                                $newDestino= strtoupper(trim (fgets(STDIN)));
-                                                $objViaje->setDestino($newDestino);
-                                                break;
-                                            
-                                            case '3':
-                                                // Desea cambiar los datos de un pasajero?  //
-                                                    echo "Ingrese los datos del pasajero a modificar: ";
-                                                    $modificarPasajero1= buscarPasajero();
-                                                    echo "Ingrese los datos nuevos del pasajero \n";
-                                                    $modificarPasajero2= buscarPasajero();
-                                                    $objViaje->modificarViajeros($modificarPasajero1,$modificarPasajero2);
-
-
-                                                    break;
-                                        
-                                            case '4':
-                                                // Desea cambiar la capacidad máxima de la movilidad?   //
-                                                    
-                                                echo "Ingrese el nuevo valor para la capacidad máxima: \n";
-                                                $capacidadNew=trim (fgets(STDIN));
-                                                $objViaje->setsetCantMaxPasajeros($capacidadNew);
-                                                break;
-                                        
-                                            case '5':
-                                                    //Ver viaje //
-                                                    echo $objViaje;
-                                                    break;
-                                        
-                                            case '6':
-                                                    // Salir  //
-                                                    $salida=false;
-                                                    break;
-                                        
-                                            default:
-                                                $salida=false;
-                                                break;
-                                        }
+                                           
                             
-                                    }while($salida);
+                                
 
                             case '3':
                                     // 3) Ver datos de un viaje
-
+                                    echo $objViaje;
                                     break;
 
                             default:
@@ -120,7 +70,7 @@ do{
 
 
     function menuPunto2(){
-        return $menu = "Elija la opción deseada:
+        return $menu = "Elija la opción deseada: \n.
         1- Desea cambiar el código del viaje? \n.
         2- Desea cambiar el destino? \n.
         3- Desea cambiar la cantidad de pasajeros que viajaron?/n.
@@ -160,4 +110,59 @@ function buscarPasajero(){
     $gente=[];
     $gente = array("nombre"=>$nomb ,"apellido"=>$apellid,"DNI"=>$id);
     return $gente;
+}
+
+function modificacionDatos(){
+
+do{
+    $salida=true;
+    echo menuPunto2();
+    $eleccion2= trim (fgets(STDIN));
+
+    switch ($eleccion2){
+        case '1':
+            // Desea cambiar el código del viaje? //
+            echo "Ingrese el nuevo código: \n";
+            $newCod= strtoupper(trim (fgets(STDIN)));
+            $objViaje->setCodigoViaje($newCod);
+            break;
+            
+        case '2':
+            // Desea cambiar el destino?  //
+            echo "Ingrese el nuevo destino: \n";
+            $newDestino= strtoupper(trim (fgets(STDIN)));
+            $objViaje->setDestino($newDestino);
+            break;
+        
+        case '3':
+            // Desea cambiar los datos de un pasajero?  //
+                echo "Ingrese los datos del pasajero a modificar: ";
+                $modificarPasajero1= buscarPasajero();
+                echo "Ingrese los datos nuevos del pasajero \n";
+                $modificarPasajero2= buscarPasajero();
+                $objViaje->modificarViajeros($modificarPasajero1,$modificarPasajero2);
+
+
+                break;
+    
+        case '4':
+            // Desea cambiar la capacidad máxima de la movilidad?   //
+                
+            echo "Ingrese el nuevo valor para la capacidad máxima: \n";
+            $capacidadNew=trim (fgets(STDIN));
+            $objViaje->setsetCantMaxPasajeros($capacidadNew);
+            break;
+    
+        case '5':
+                //Ver viaje //
+                echo $objViaje;
+                break;
+    
+        default:
+            // Salir  //
+            $salida=false;
+            break;
+    }
+
+}while($salida);
 }
