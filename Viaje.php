@@ -92,7 +92,7 @@ class Viaje{
 
     public function agregarPasajero($viajante){
         $arrayBruto=[];
-        $arrayBruto= $this->getPasajeros;
+        $arrayBruto= $this->getPasajeros();
         array_push($arrayBruto, $viajante);
         $this->setPasajeros($arrayBruto);
     }
