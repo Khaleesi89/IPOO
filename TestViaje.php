@@ -99,15 +99,15 @@ do{
 ///BUSCAR PASAJERO///
 
 function buscarPasajero(){
-    echo  "Nombre: \n";
-    $nomb = trim(fgets(STDIN));
-    echo  "Apellido:\n";
-    $apellid = trim(fgets(STDIN));
-    echo "DNI:\n";
-    $id = trim(fgets( STDIN ));
-    $gente=[];
-    $gente = array("nombre"=>$nomb ,"apellido"=>$apellid,"DNI"=>$id);
-    return $gente;
+        echo  "Nombre: \n";
+        $nomb = trim(fgets(STDIN));
+        echo  "Apellido:\n";
+        $apellid = trim(fgets(STDIN));
+        echo "DNI:\n";
+        $id = trim(fgets( STDIN ));
+        $gente=[];
+        $gente = array("nombre"=>$nomb ,"apellido"=>$apellid,"DNI"=>$id);
+        return $gente;
 }
 
 function modificacionDatos($objeto){
@@ -134,11 +134,11 @@ do{
         
         case '3':
             // Desea cambiar los datos de un pasajero?  //
-                echo "Ingrese los datos del pasajero a modificar: ";
-                $modificarPasajero1= buscarPasajero();
-                echo "Ingrese los datos nuevos del pasajero \n";
-                $modificarPasajero2= buscarPasajero();
-                $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
+            echo "Ingrese los datos del pasajero a modificar: ";
+            $modificarPasajero1= buscarPasajero();
+            echo "Ingrese los datos nuevos del pasajero \n";
+            $modificarPasajero2= buscarPasajero();
+            $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
 
                 break;
     
@@ -151,9 +151,9 @@ do{
             break;
     
         case '5':
-                //Ver viaje //
-                echo $objeto;
-                break;
+            //Ver viaje //
+            echo $objeto;
+            break;
     
         default:
             // Salir  //
