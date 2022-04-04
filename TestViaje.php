@@ -14,38 +14,35 @@ do{
     $viagiando= trim (fgets(STDIN));
     switch ($viagiando){
         
-                            case '1':
-                                    // 1) Cargar un viaje 
-                                    echo "Ingrese los datos correspondientes al viaje \n";
-                                    echo "Ingrese el codigo del viaje: \n";
-                                    $viajeCodigo= strtoupper(trim (fgets(STDIN)));
-                                    echo "Ingrese el destino: \n";
-                                    $lugarDestino= strtoupper(trim (fgets(STDIN)));
-                                    echo "Ingrese la cantidad máxima de asientos: \n";
-                                    $maxAsientos = trim (fgets(STDIN));
-                                    $objViaje = new Viaje($viajeCodigo,$lugarDestino,$maxAsientos);
-                                    echo "Ingrese los datos de los pasajeros: \n";
-                                    $persona=[];
-                                    $persona=infoPasajero();
-                                    $objViaje->agregarPasajero($persona);
+                 case '1':
+                         // 1) Cargar un viaje 
+                        echo "Ingrese los datos correspondientes al viaje \n";
+                        echo "Ingrese el codigo del viaje: \n";
+                        $viajeCodigo= strtoupper(trim (fgets(STDIN)));
+                        echo "Ingrese el destino: \n";
+                        $lugarDestino= strtoupper(trim (fgets(STDIN)));
+                        echo "Ingrese la cantidad máxima de asientos: \n";
+                        $maxAsientos = trim (fgets(STDIN));
+                        $objViaje = new Viaje($viajeCodigo,$lugarDestino,$maxAsientos);
+                        echo "Ingrese los datos de los pasajeros: \n";
+                        $persona=[];
+                        $persona=infoPasajero();
+                        $objViaje->agregarPasajero($persona);
+                        break;
 
-                            break;
+                case '2':
+                        // 2) Modificar un viaje
+                        echo modificacionDatos($objViaje);
+                        break;                           
 
-                            case '2':
-                                // 2) Modificar un viaje
-                                echo modificacionDatos($objViaje);
+                case '3':
+                        // 3) Ver datos de un viaje
+                        echo $objViaje;
+                        break;
 
-                            break;                            
-                                
-
-                            case '3':
-                                    // 3) Ver datos de un viaje
-                                    echo $objViaje;
-                                    break;
-
-                            default:
-                            $finish= false;
-                            break;
+                default:
+                        $finish= false;
+                        break;
     };
 }while($finish);
 
@@ -62,22 +59,20 @@ do{
             echo "Ingrese DNI: \n";
             $dni= strtoupper(trim (fgets(STDIN)));
             $pasajero = ['nombre'=>$nombre, 'apellido'=>$apellido, 'DNI'=>$dni];
-        return $pasajero;
+            return $pasajero;
     }
 
 
 
     function menuPunto2(){
-        return $menu = "Elija la opción deseada: \n.
-        1- Desea cambiar el código del viaje? \n.
-        2- Desea cambiar el destino? \n.
-        3- Desea cambiar la cantidad de pasajeros que viajaron?/n.
-        4- Desea cambiar los datos de un pasajero?\n.
-        5- Desea cambiar la capacidad máxima de la movilidad?\n.
-        6- Ver viaje \n.
-        7- Salir \n.";
-
-
+            return $menu = "Elija la opción deseada: \n.
+            1- Desea cambiar el código del viaje? \n.
+            2- Desea cambiar el destino? \n.
+            3- Desea cambiar la cantidad de pasajeros que viajaron?/n.
+            4- Desea cambiar los datos de un pasajero?\n.
+            5- Desea cambiar la capacidad máxima de la movilidad?\n.
+            6- Ver viaje \n.
+            7- Salir \n.";
 
     }
 
@@ -139,8 +134,7 @@ do{
             echo "Ingrese los datos nuevos del pasajero \n";
             $modificarPasajero2= buscarPasajero();
             $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
-
-                break;
+            break;
     
         case '4':
             // Desea cambiar la capacidad máxima de la movilidad?   //
