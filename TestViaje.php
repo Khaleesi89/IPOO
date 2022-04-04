@@ -25,10 +25,18 @@ do{
                         $maxAsientos = trim (fgets(STDIN));
                         $objViaje = new Viaje($viajeCodigo,$lugarDestino,$maxAsientos);
                         echo "Ingrese los datos de los pasajeros: \n";
-                        $persona=[];
-                        $persona=infoPasajero();
-                        $objViaje->agregarPasajero($persona);
-                        break;
+                        do{
+                            $continuacion=false;
+                            $persona=[];
+                            $persona=infoPasajero();
+                            $objViaje->agregarPasajero($persona);
+                            echo "Desea agregar un nuevo pasajero?: S o N \n";
+                            $seguimos=strtoupper(trim(fgets(STDIN)));
+                            if($seguimos=="S"){
+                                $continuacion= true;
+                            }
+                        }while($continuacion);
+                            break;
 
                 case '2':
                         // 2) Modificar un viaje
@@ -50,7 +58,7 @@ do{
 
 
     function infoPasajero(){
-       
+        
             $pasajero=[];
             echo "Ingrese apellido: \n";
             $apellido= strtoupper(trim (fgets(STDIN)));
