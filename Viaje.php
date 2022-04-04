@@ -151,10 +151,10 @@ class Viaje{
     public function __toString(){
         $todosLosViajeros= $this->datosPasajerosString();
         $info="
-        viaje: . $this->getCodigoViaje() .\n
-        Destino: . $this->getDestino() .\n
-        Cantidad Máxima de Pasajeros: . $this->getCantMaxPasajeros() . \n
-        Cantidad de Pasajeros: . $this->getCantPasajerosViaje() . \n;
+        viaje: . {$this->getCodigoViaje()} .\n
+        Destino: . {$this->getDestino()} .\n
+        Cantidad Máxima de Pasajeros: . {$this->getCantMaxPasajeros()} . \n
+        Cantidad de Pasajeros: . {$this->getCantPasajerosViaje()} . \n;
         Datos de Pasajeros: 
         \n
         $todosLosViajeros";
