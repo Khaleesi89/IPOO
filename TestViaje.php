@@ -68,7 +68,7 @@ do{
             return $menu = "Elija la opción deseada: \n.
             1- Desea cambiar el código del viaje? \n.
             2- Desea cambiar el destino? \n.
-            3- Desea cambiar la cantidad de pasajeros que viajaron?/n.
+            3- Desea cambiar la cantidad de pasajeros que viajaron?\n.
             4- Desea cambiar los datos de un pasajero?\n.
             5- Desea cambiar la capacidad máxima de la movilidad?\n.
             6- Ver viaje \n.
@@ -93,7 +93,7 @@ do{
 
 ///BUSCAR PASAJERO///
 
-function buscarPasajero(){
+function cargarPasajero(){
         echo  "Nombre: \n";
         $nomb = trim(fgets(STDIN));
         echo  "Apellido:\n";
@@ -129,10 +129,10 @@ do{
         
         case '3':
             // Desea cambiar los datos de un pasajero?  //
-            echo "Ingrese los datos del pasajero a modificar: ";
-            $modificarPasajero1= buscarPasajero();
+            echo "Ingrese los datos del pasajero a modificar: \n";
+            $modificarPasajero1= cargarPasajero();
             echo "Ingrese los datos nuevos del pasajero \n";
-            $modificarPasajero2= buscarPasajero();
+            $modificarPasajero2= cargarPasajero();
             $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
             break;
     
