@@ -8,7 +8,7 @@ echo "--------- Viaje Feliz ----------\n";
 
 // MENU PRINCIPAL //
 
-$terminar=true;
+$finish=true;
 do{
     echo menu();
     $viagiando= trim (fgets(STDIN));
