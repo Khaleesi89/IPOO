@@ -12,7 +12,7 @@ $finish=true;
 do{
     echo menu();
     $viagiando= trim (fgets(STDIN));
-    switch ($viagiando) {
+    switch ($viagiando){
         
                             case '1':
                                     // 1) Cargar un viaje 
@@ -27,6 +27,7 @@ do{
                                     echo "Ingrese los datos de los pasajeros: \n";
                                     $persona=[];
                                     $persona=infoPasajero();
+                                    $objViaje->agregarPasajero($persona);
 
                             break;
 
@@ -46,8 +47,6 @@ do{
                             $finish= false;
                             break;
     };
-
-
 }while($finish);
 
 
