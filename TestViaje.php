@@ -10,8 +10,8 @@ echo "--------- Viaje Feliz ----------\n";
 
 $finish=true;
 do{
-    echo menu();
-    $viagiando= trim (fgets(STDIN));
+    
+    $viagiando= menu();
     switch ($viagiando){
         
                  case '1':
@@ -83,12 +83,12 @@ do{
             2) Modificar un viaje \n
             3) Ver datos de un viaje \n
             4) Salir\n";
-            $respuesta =trim(fgets(STDIN));
-            if (!(is_int($respuesta)) && ($respuesta < 0 || $respuesta > 4)) {
-                echo "Opcion incorrecta.\n";
-            }    
-    }while (((is_int($respuesta)) && ($respuesta < 0 || $respuesta < 4)));
-}
+            $respuesta =trim(fgets(STDIN));            
+             
+    }while (((is_int($respuesta))&&($respuesta < 0 || $respuesta < 4)));
+    return $respuesta;
+    }
+
 
 
 ///BUSCAR PASAJERO///
@@ -141,7 +141,7 @@ do{
                 
             echo "Ingrese el nuevo valor para la capacidad máxima: \n";
             $capacidadNew=trim (fgets(STDIN));
-            $objeto->setsetCantMaxPasajeros($capacidadNew);
+            $objeto->setCantMaxPasajeros($capacidadNew);
             break;
     
         case '5':
