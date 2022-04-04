@@ -23,7 +23,9 @@ do{
                         $lugarDestino= strtoupper(trim (fgets(STDIN)));
                         echo "Ingrese la cantidad máxima de asientos: \n";
                         $maxAsientos = trim (fgets(STDIN));
-                        $objViaje = new Viaje($viajeCodigo,$lugarDestino,$maxAsientos);
+                        echo "Ingrese la cantidad de asientos ocupados: \n";
+                        $asientosOcup = trim (fgets(STDIN));
+                        $objViaje = new Viaje($viajeCodigo,$lugarDestino,$maxAsientos, $asientosOcup);
                         echo "Ingrese los datos de los pasajeros: \n";
                         do{
                             $continuacion=false;
@@ -55,7 +57,7 @@ do{
 }while($finish);
 
 
-
+/// PARA AGREGAR PASAJERO ////
 
     function infoPasajero(){
         
@@ -70,7 +72,7 @@ do{
             return $pasajero;
     }
 
-
+//// MENU PARA EL PUNTO 2 DEL MENU PRINCIPAL ////
 
     function menuPunto2(){
             return $menu = "Elija la opción deseada: \n.
@@ -83,6 +85,9 @@ do{
             7- Salir \n.";
 
     }
+
+
+//// MENU PRINCIIPAL ////
 
     function menu(){
         do{
@@ -98,7 +103,6 @@ do{
     }
 
 
-
 ///BUSCAR PASAJERO///
 
 function cargarPasajero(){
@@ -112,6 +116,11 @@ function cargarPasajero(){
         $gente = array("nombre"=>$nomb ,"apellido"=>$apellid,"DNI"=>$id);
         return $gente;
 }
+
+
+
+//// FUNCION PARA MODIFICAR DATOS ////
+
 
 function modificacionDatos($objeto){
 
