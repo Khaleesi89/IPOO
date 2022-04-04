@@ -32,10 +32,9 @@ do{
 
                             case '2':
                                 // 2) Modificar un viaje
-                                echo modificacionDatos();
+                                echo modificacionDatos($objViaje);
 
-                                           
-                            
+                            break;                            
                                 
 
                             case '3':
@@ -45,7 +44,7 @@ do{
 
                             default:
                             $finish= false;
-                                    break;
+                            break;
     };
 
 
@@ -112,7 +111,7 @@ function buscarPasajero(){
     return $gente;
 }
 
-function modificacionDatos(){
+function modificacionDatos($objeto){
 
 do{
     $salida=true;
@@ -124,14 +123,14 @@ do{
             // Desea cambiar el código del viaje? //
             echo "Ingrese el nuevo código: \n";
             $newCod= strtoupper(trim (fgets(STDIN)));
-            $objViaje->setCodigoViaje($newCod);
+            $objeto->setCodigoViaje($newCod);
             break;
             
         case '2':
             // Desea cambiar el destino?  //
             echo "Ingrese el nuevo destino: \n";
             $newDestino= strtoupper(trim (fgets(STDIN)));
-            $objViaje->setDestino($newDestino);
+            $objeto->setDestino($newDestino);
             break;
         
         case '3':
@@ -140,8 +139,7 @@ do{
                 $modificarPasajero1= buscarPasajero();
                 echo "Ingrese los datos nuevos del pasajero \n";
                 $modificarPasajero2= buscarPasajero();
-                $objViaje->modificarViajeros($modificarPasajero1,$modificarPasajero2);
-
+                $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
 
                 break;
     
@@ -150,12 +148,12 @@ do{
                 
             echo "Ingrese el nuevo valor para la capacidad máxima: \n";
             $capacidadNew=trim (fgets(STDIN));
-            $objViaje->setsetCantMaxPasajeros($capacidadNew);
+            $objeto->setsetCantMaxPasajeros($capacidadNew);
             break;
     
         case '5':
                 //Ver viaje //
-                echo $objViaje;
+                echo $objeto;
                 break;
     
         default:
