@@ -143,8 +143,14 @@ do{
             $newDestino= strtoupper(trim (fgets(STDIN)));
             $objeto->setDestino($newDestino);
             break;
-        
+
         case '3':
+                // Desea cambiar la cantidad de pasajeros que viajaron?  //
+                echo "Ingrese la nueva cantidad de pasajeros que viajaron: \n";
+                $modCantPasajeros =trim (fgets(STDIN));
+                $objeto->setCantPasajerosViaje($modCantPasajeros);
+        
+        case '4':
             // Desea cambiar los datos de un pasajero?  //
             echo "Ingrese los datos del pasajero a modificar: \n";
             $modificarPasajero1= cargarPasajero();
@@ -153,15 +159,15 @@ do{
             $objeto->modificarViajeros($modificarPasajero1,$modificarPasajero2);
             break;
     
-        case '4':
-            // Desea cambiar la capacidad máxima de la movilidad?   //
+        case '5':
+            // Desea cambiar la capacidad máxima de pasajeros   //
                 
             echo "Ingrese el nuevo valor para la capacidad máxima: \n";
             $capacidadNew=trim (fgets(STDIN));
             $objeto->setCantMaxPasajeros($capacidadNew);
             break;
-    
-        case '5':
+
+        case '6':
             //Ver viaje //
             echo $objeto;
             break;
