@@ -23,15 +23,19 @@ class Viaje{
     private $cantPasajerosViaje;
 
     //pasajeros del viaje //
-    private $pasajeros= [];
+    private $coleccObjPasajero= [];
+
+    //responsable del viaje//
+    private $objResponsable;
 
 
     //// CONSTRUCTOR ////
-    public function __construct($codViagem , $destiny , $cantMaxPasaj, $cantidadGenteEnBus){
+    public function __construct($codViagem , $destiny , $cantMaxPasaj, $cantidadGenteEnBus, $responsable){
         $this->codigoViaje = $codViagem;
         $this->destino = $destiny;
         $this->cantMaxPasajeros = $cantMaxPasaj;
         $this->cantPasajerosViaje = $cantidadGenteEnBus;
+        $this->objResponsable = $responsable;
            
     }   
 
@@ -75,15 +79,24 @@ class Viaje{
 
     ////////////////////////////////
 
-    public function getPasajeros(){
-        return $this->pasajeros;
+    public function getColeccObjPasajero(){
+        return $this->coleccObjPasajero;
     }
 
-    public function setPasajeros($viajeros){
-        $this->pasajeros=$viajeros;
+    public function setColeccObjPasajero($arrayPasajero){
+        $this->coleccObjPasajero=$arrayPasajero;
+    }
+
+    public function getObjResponsable(){
+        return $this->objResponsable;
+    }
+
+    public function setObjResponsable($responsable){
+        $this->objResponsable = $responsable;
     }
 
     ////////////////////////////////
+
     //AGREGO CADA PASAJERO AL ARRAY DEL ATRIBUTO
 
     /**
@@ -93,9 +106,9 @@ class Viaje{
 
     public function agregarPasajero($viajante){
         $arrayBruto=[];
-        $arrayBruto= $this->getPasajeros();
+        $arrayBruto= $this->getColeccObjPasajero();
         array_push($arrayBruto, $viajante);
-        $this->setPasajeros($arrayBruto);
+        $this->setColeccObjPasajero($arrayBruto);
     }
 
     //// MODIFICO DATOS DE LOS PASAJEROS ////
@@ -105,14 +118,26 @@ class Viaje{
      * @return void
      */
     
-    public function modificarViajeros($pasaj, $pasajOtro){
-        $arrayHipotetico = $this->getPasajeros();
-        $encontrado = array_search($pasaj, $arrayHipotetico);
-        $arrayHipotetico[$encontrado]= $pasajOtro;
-        $this->setPasajeros($arrayHipotetico);
-
+    public function modificarViajeros($nombrePasaj, $apellidoPasaj, $identidadDni, $phones){
+        $arrayParaBuscar = $this->getColeccObjPasajero();
+        $i= 0;
+        $sigue =true;
+        while ($i < count($arrayParaBuscar) && $sigue){ //ITERAMOS MIENTRAS $i SEA MENOR QUE LA CANTIDAD DE LOS EELEMENTOS DEL ARREGLO Y QUE LA BANDEERA $sigue SEA TRUE
+            $pasajeroAbuscar = $arrayParaBuscar[$i];
+            $identifPasaj = $pasajeroAbuscar->getDocumento();
+            if ($identifPasaj == $identidadDni){
+                $sigue = false; // COMO ENCONTRE EL PASAJERO QUE QUIERO MODIFICAR CAMBIO EL VALOR DE VERDAD DE LA BANDERA
+                $pasajeroAbuscar->setNombre($nombrePasaj);
+                $pasajeroAbuscar->setApellido( $apellidoPasaj);
+                $pasajeroAbuscar->setDocumento($identidadDni);
+                $pasajeroAbuscar->setTelefono($phones);
+                $arrayParaBuscar[$i] = $pasajeroAbuscar;
+        }   
+        $i++;
     }
-
+        return $arrayParaBuscar;
+    }
+   
     //// ARMO UN STRING CON LOS DATOS DE LOS PASAJEROS ////
 
     /**
@@ -122,7 +147,7 @@ class Viaje{
 
     public function datosPasajerosString(){
         $stringPasajeros="";
-        foreach($this->getPasajeros() as $key => $value){
+        foreach($this->getColeccObjPasajero() as $key => $value){
             $name= $value['nombre'];
             $surname= $value['apellido'];
             $dni= $value['DNI'];
@@ -161,4 +186,6 @@ class Viaje{
         $todosLosViajeros";
         return $info;
     }
+
+    
 }
